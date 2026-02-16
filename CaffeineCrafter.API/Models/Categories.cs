@@ -1,14 +1,34 @@
-﻿namespace CaffeineCrafter.API.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CaffeineCrafter.API.Models
 {
     public class Categories
     {
+        [Key]
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "Name is required")]
+        [StringLength(100, ErrorMessage = "Name cannot exceed 100 characters")]
+        [Display(Name = "Name")]
         public string Name { get; set; }
+
+        [StringLength(500, ErrorMessage = "Description cannot exceed 500 characters")]
+        [Display(Name = "Description")]
         public string Description { get; set; }
+
+        [Display(Name = "Image URL")]
         public string ImageUrl { get; set; }
+
+        [Display(Name = "Active")]
         public bool IsActive { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public List<Products> Products { get; set; }
+
+        [Display(Name = "Created At")]
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+        [Display(Name = "Updated At")]
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+        public ICollection<Products> Products { get; set; } = new List<Products>();
     }
 }

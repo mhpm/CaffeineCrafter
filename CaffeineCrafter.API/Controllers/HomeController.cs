@@ -1,14 +1,24 @@
+using CaffeineCrafter.API.Data;
 using CaffeineCrafter.API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace CaffeineCrafter.API.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext context)
         {
-            return View();
+            _context = context;
+        }
+        
+        public IActionResult Index()    
+        {
+            var categories = _context.Categories.ToList();
+            return View(categories);
         }
 
         public IActionResult Privacy()

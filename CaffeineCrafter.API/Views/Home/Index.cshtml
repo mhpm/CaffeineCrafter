@@ -1,8 +1,74 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<CaffeineCrafter.API.Models.Categories>
+
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="container">
+        <h1 class="hero-title">Caffeine Crafter</h1>
+        <p class="hero-subtitle">Experience the perfect blend of passion and quality.</p>
+        <a href="#categories" class="btn btn-primary-custom btn-lg">Explore Menu</a>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container features-section">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    ☕
+                </div>
+                <h3>Premium Beans</h3>
+                <p>Sourced from the best coffee farms around the world.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    🚀
+                </div>
+                <h3>Fast Delivery</h3>
+                <p>Hot and fresh coffee delivered right to your doorstep.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    ❤️
+                </div>
+                <h3>Made with Love</h3>
+                <p>Our baristas pour their heart into every cup.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Categories Section -->
+<div id="categories" class="categories-section">
+    <div class="container">
+        <h2 class="section-title">Our Categories</h2>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 mb-4">
+                    <div class="category-card">
+                        <div class="category-img-wrapper">
+                            <!-- Use a placeholder that is definitely an image -->
+                            <img src="https://placehold.co/400x300?text=@(item.Name)" 
+                                 alt="@item.Name" 
+                                 class="category-img">
+                        </div>
+                        <div class="category-body">
+                            <h5 class="category-title">@item.Name</h5>
+                            <p class="text-muted small">@item.Description</p>
+                            <a asp-controller="Products" asp-action="Index" class="btn btn-outline-primary btn-sm mt-2">View Products</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
