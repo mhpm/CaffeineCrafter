@@ -13,12 +13,41 @@ namespace CaffeineCrafter.API.Data
             {
                 var categories = new Categories[]
                 {
-                    new Categories{Name="Coffee", Description="Freshly brewed coffee", ImageUrl="coffee.jpg", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now},
-                    new Categories{Name="Tea", Description="Herbal and black teas", ImageUrl="tea.jpg", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now},
-                    new Categories{Name="Pastries", Description="Delicious snacks", ImageUrl="pastries.jpg", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now},
-                    new Categories{Name="Cold Drinks", Description="Refreshing cold beverages", ImageUrl="cold_drinks.jpg", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now}
+                    new Categories{Name="Coffee", Description="Freshly brewed coffee", ImageUrl="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now},
+                    new Categories{Name="Tea", Description="Herbal and black teas", ImageUrl="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now},
+                    new Categories{Name="Pastries", Description="Delicious snacks", ImageUrl="https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now},
+                    new Categories{Name="Cold Drinks", Description="Refreshing cold beverages", ImageUrl="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now}
                 };
                 context.Categories.AddRange(categories);
+                context.SaveChanges();
+            }
+            else
+            {
+                // Update existing categories with images if they have placeholder values
+                var coffee = context.Categories.FirstOrDefault(c => c.Name == "Coffee");
+                if (coffee != null && (string.IsNullOrEmpty(coffee.ImageUrl) || coffee.ImageUrl == "coffee.jpg"))
+                {
+                    coffee.ImageUrl = "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=80";
+                }
+
+                var tea = context.Categories.FirstOrDefault(c => c.Name == "Tea");
+                if (tea != null && (string.IsNullOrEmpty(tea.ImageUrl) || tea.ImageUrl == "tea.jpg"))
+                {
+                    tea.ImageUrl = "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=800&q=80";
+                }
+
+                var pastries = context.Categories.FirstOrDefault(c => c.Name == "Pastries");
+                if (pastries != null && (string.IsNullOrEmpty(pastries.ImageUrl) || pastries.ImageUrl == "pastries.jpg"))
+                {
+                    pastries.ImageUrl = "https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=800&q=80";
+                }
+
+                var coldDrinks = context.Categories.FirstOrDefault(c => c.Name == "Cold Drinks");
+                if (coldDrinks != null && (string.IsNullOrEmpty(coldDrinks.ImageUrl) || coldDrinks.ImageUrl == "cold_drinks.jpg"))
+                {
+                    coldDrinks.ImageUrl = "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80";
+                }
+
                 context.SaveChanges();
             }
 
