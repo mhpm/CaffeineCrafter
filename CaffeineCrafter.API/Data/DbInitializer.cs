@@ -61,14 +61,55 @@ namespace CaffeineCrafter.API.Data
 
                 var products = new Products[]
                 {
-                    new Products{Name="Espresso", Description="Strong black coffee", ImageUrl="espresso.jpg", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=coffeeCategory?.Id},
-                    new Products{Name="Latte", Description="Coffee with steamed milk", ImageUrl="latte.jpg", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=coffeeCategory?.Id},
-                    new Products{Name="Green Tea", Description="Healthy green tea", ImageUrl="green_tea.jpg", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=teaCategory?.Id},
-                    new Products{Name="Croissant", Description="Buttery pastry", ImageUrl="croissant.jpg", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=pastryCategory?.Id},
-                    new Products{Name="Muffin", Description="Fluffy pastry", ImageUrl="muffin.jpg", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=pastryCategory?.Id},
-                    new Products{Name="Cold Brew", Description="Refreshing cold brew coffee", ImageUrl="cold_brew.jpg", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=coffeeCategory?.Id},
+                    new Products{Name="Espresso", Description="Strong black coffee", ImageUrl="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=coffeeCategory?.Id},
+                    new Products{Name="Latte", Description="Coffee with steamed milk", ImageUrl="https://images.unsplash.com/photo-1570968992193-d6ea0826f923?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=coffeeCategory?.Id},
+                    new Products{Name="Green Tea", Description="Healthy green tea", ImageUrl="https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=teaCategory?.Id},
+                    new Products{Name="Croissant", Description="Buttery pastry", ImageUrl="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=pastryCategory?.Id},
+                    new Products{Name="Muffin", Description="Fluffy pastry", ImageUrl="https://images.unsplash.com/photo-1558401391-7899b4bd5bbf?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=pastryCategory?.Id},
+                    new Products{Name="Cold Brew", Description="Refreshing cold brew coffee", ImageUrl="https://images.unsplash.com/photo-1517701604599-bb29b5c73553?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=coffeeCategory?.Id},
                 };
                 context.Products.AddRange(products);
+                context.SaveChanges();
+            }
+            else
+            {
+                // Update existing products with images if they have placeholder values
+                var espresso = context.Products.FirstOrDefault(p => p.Name == "Espresso");
+                if (espresso != null && (string.IsNullOrEmpty(espresso.ImageUrl) || espresso.ImageUrl == "espresso.jpg"))
+                {
+                    espresso.ImageUrl = "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=800&q=80";
+                }
+
+                var latte = context.Products.FirstOrDefault(p => p.Name == "Latte");
+                if (latte != null && (string.IsNullOrEmpty(latte.ImageUrl) || latte.ImageUrl == "latte.jpg"))
+                {
+                    latte.ImageUrl = "https://images.unsplash.com/photo-1570968992193-d6ea0826f923?auto=format&fit=crop&w=800&q=80";
+                }
+
+                var greenTea = context.Products.FirstOrDefault(p => p.Name == "Green Tea");
+                if (greenTea != null && (string.IsNullOrEmpty(greenTea.ImageUrl) || greenTea.ImageUrl == "green_tea.jpg"))
+                {
+                    greenTea.ImageUrl = "https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?auto=format&fit=crop&w=800&q=80";
+                }
+
+                var croissant = context.Products.FirstOrDefault(p => p.Name == "Croissant");
+                if (croissant != null && (string.IsNullOrEmpty(croissant.ImageUrl) || croissant.ImageUrl == "croissant.jpg"))
+                {
+                    croissant.ImageUrl = "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80";
+                }
+
+                var muffin = context.Products.FirstOrDefault(p => p.Name == "Muffin");
+                if (muffin != null && (string.IsNullOrEmpty(muffin.ImageUrl) || muffin.ImageUrl == "muffin.jpg"))
+                {
+                    muffin.ImageUrl = "https://images.unsplash.com/photo-1558401391-7899b4bd5bbf?auto=format&fit=crop&w=800&q=80";
+                }
+
+                var coldBrew = context.Products.FirstOrDefault(p => p.Name == "Cold Brew");
+                if (coldBrew != null && (string.IsNullOrEmpty(coldBrew.ImageUrl) || coldBrew.ImageUrl == "cold_brew.jpg"))
+                {
+                    coldBrew.ImageUrl = "https://images.unsplash.com/photo-1517701604599-bb29b5c73553?auto=format&fit=crop&w=800&q=80";
+                }
+
                 context.SaveChanges();
             }
 

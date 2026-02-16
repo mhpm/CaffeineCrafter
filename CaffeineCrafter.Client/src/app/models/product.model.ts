@@ -1,3 +1,5 @@
+import { Category } from './category.model';
+
 export interface Product {
   id: number;
   name: string;
@@ -7,5 +9,6 @@ export interface Product {
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
-  categoryId: number;
+  categoriesId: number;
+  category?: Category;
 }
