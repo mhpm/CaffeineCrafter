@@ -13,10 +13,10 @@ namespace CaffeineCrafter.API.Data
             {
                 var categories = new Categories[]
                 {
-                    new Categories{Name="Coffee", Description="Freshly brewed coffee", ImageUrl="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now},
-                    new Categories{Name="Tea", Description="Herbal and black teas", ImageUrl="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now},
-                    new Categories{Name="Pastries", Description="Delicious snacks", ImageUrl="https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now},
-                    new Categories{Name="Cold Drinks", Description="Refreshing cold beverages", ImageUrl="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now}
+                    new Categories{Name="Coffee", Description="Freshly brewed coffee", ImageUrl="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.UtcNow, UpdatedAt=DateTime.UtcNow},
+                    new Categories{Name="Tea", Description="Herbal and black teas", ImageUrl="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.UtcNow, UpdatedAt=DateTime.UtcNow},
+                    new Categories{Name="Pastries", Description="Delicious snacks", ImageUrl="https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.UtcNow, UpdatedAt=DateTime.UtcNow},
+                    new Categories{Name="Cold Drinks", Description="Refreshing cold beverages", ImageUrl="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.UtcNow, UpdatedAt=DateTime.UtcNow}
                 };
                 context.Categories.AddRange(categories);
                 context.SaveChanges();
@@ -61,12 +61,12 @@ namespace CaffeineCrafter.API.Data
 
                 var products = new Products[]
                 {
-                    new Products{Name="Espresso", Description="Strong black coffee", ImageUrl="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=coffeeCategory?.Id},
-                    new Products{Name="Latte", Description="Coffee with steamed milk", ImageUrl="https://images.unsplash.com/photo-1570968992193-d6ea0826f923?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=coffeeCategory?.Id},
-                    new Products{Name="Green Tea", Description="Healthy green tea", ImageUrl="https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=teaCategory?.Id},
-                    new Products{Name="Croissant", Description="Buttery pastry", ImageUrl="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=pastryCategory?.Id},
-                    new Products{Name="Muffin", Description="Fluffy pastry", ImageUrl="https://images.unsplash.com/photo-1558401391-7899b4bd5bbf?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=pastryCategory?.Id},
-                    new Products{Name="Cold Brew", Description="Refreshing cold brew coffee", ImageUrl="https://images.unsplash.com/photo-1517701604599-bb29b5c73553?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.Now, UpdatedAt=DateTime.Now, CategoriesId=coffeeCategory?.Id},
+                    new Products{Name="Espresso", Description="Strong black coffee", ImageUrl="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.UtcNow, UpdatedAt=DateTime.UtcNow, CategoriesId=coffeeCategory?.Id},
+                    new Products{Name="Latte", Description="Coffee with steamed milk", ImageUrl="https://images.unsplash.com/photo-1570968992193-d6ea0826f923?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.UtcNow, UpdatedAt=DateTime.UtcNow, CategoriesId=coffeeCategory?.Id},
+                    new Products{Name="Green Tea", Description="Healthy green tea", ImageUrl="https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.UtcNow, UpdatedAt=DateTime.UtcNow, CategoriesId=teaCategory?.Id},
+                    new Products{Name="Croissant", Description="Buttery pastry", ImageUrl="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.UtcNow, UpdatedAt=DateTime.UtcNow, CategoriesId=pastryCategory?.Id},
+                    new Products{Name="Muffin", Description="Fluffy pastry", ImageUrl="https://images.unsplash.com/photo-1558401391-7899b4bd5bbf?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.UtcNow, UpdatedAt=DateTime.UtcNow, CategoriesId=pastryCategory?.Id},
+                    new Products{Name="Cold Brew", Description="Refreshing cold brew coffee", ImageUrl="https://images.unsplash.com/photo-1517701604599-bb29b5c73553?auto=format&fit=crop&w=800&q=80", IsActive=true, CreatedAt=DateTime.UtcNow, UpdatedAt=DateTime.UtcNow, CategoriesId=coffeeCategory?.Id},
                 };
                 context.Products.AddRange(products);
                 context.SaveChanges();
