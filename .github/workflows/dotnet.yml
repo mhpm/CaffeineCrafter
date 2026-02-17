@@ -1,0 +1,46 @@
+name: .NET & Angular CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # 1. Build Angular Client
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        
+    - name: Install Client Dependencies
+      working-directory: ./CaffeineCrafter.Client
+      run: npm install
+
+    - name: Build Client
+      working-directory: ./CaffeineCrafter.Client
+      run: npm run build
+
+    # 2. Build .NET API
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 10.0.x
+        include-prerelease: true
+
+    - name: Restore dependencies
+      run: dotnet restore CaffeineCrafter.API/CaffeineCrafter.API.csproj
+
+    - name: Build
+      run: dotnet build CaffeineCrafter.API/CaffeineCrafter.API.csproj --no-restore --configuration Release
+
+    # 3. Test (Optional - enable if you have a test project)
+    # - name: Test
+    #   run: dotnet test CaffeineCrafter.Tests/CaffeineCrafter.Tests.csproj --no-build --verbosity normal
