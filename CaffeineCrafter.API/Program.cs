@@ -32,11 +32,14 @@ if (!string.IsNullOrEmpty(databaseUrl))
     {
         var databaseUri = new Uri(databaseUrl);
         var userInfo = databaseUri.UserInfo.Split(':');
+        var username = userInfo[0];
+        var password = userInfo.Length > 1 ? userInfo[1] : "";
         
         var port = databaseUri.Port > 0 ? databaseUri.Port : 5432;
+        var database = databaseUri.LocalPath.TrimStart('/');
         
         // Build connection string manually
-        connectionString = $"Host={databaseUri.Host};Port={port};Database={databaseUri.LocalPath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SSL Mode=Require;Trust Server Certificate=true";
+        connectionString = $"Host={databaseUri.Host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Require;Trust Server Certificate=true";
         
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(connectionString));

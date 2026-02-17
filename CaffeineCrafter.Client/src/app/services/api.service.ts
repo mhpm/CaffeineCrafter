@@ -9,7 +9,11 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:5130'; // Adjust if your API runs on a different port
+  // Use relative path in production (Angular is served by the API)
+  // Use localhost in development
+  private apiUrl = window.location.hostname === 'localhost' 
+    ? 'http://localhost:5130' 
+    : window.location.origin;
 
   constructor(private http: HttpClient) { }
 
