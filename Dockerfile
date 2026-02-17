@@ -5,6 +5,7 @@ COPY CaffeineCrafter.Client/package*.json ./
 RUN npm install
 COPY CaffeineCrafter.Client/ ./
 # Build the Angular app to dist/client
+# Fix for Angular 17+ build output path structure
 RUN npm run build -- --output-path=dist/client
 
 # Stage 2: Build .NET API
@@ -24,6 +25,11 @@ COPY --from=api-build /app/publish .
 # Copy Angular build output to wwwroot
 # Note: Angular 17+ with application builder outputs to dist/client/browser
 COPY --from=client-build /app/dist/client/browser ./wwwroot
+# If the above fails (e.g. older Angular versions), try the fallback
+# COPY --from=client-build /app/dist/client ./wwwroot
+
+# Fix permissions for Render (optional but good practice)
+USER app
 
 # Expose port 8080 (Render default)
 EXPOSE 8080
