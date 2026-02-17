@@ -24,11 +24,9 @@ namespace CaffeineCrafter.API.Models
         public bool IsActive { get; set; }
 
         [Display(Name = "Created At")]
-        [Column(TypeName = "timestamp")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         [Display(Name = "Updated At")]
-        [Column(TypeName = "timestamp")]
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
         public ICollection<Products> Products { get; set; } = new List<Products>();

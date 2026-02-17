@@ -55,7 +55,7 @@ namespace CaffeineCrafter.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("CaffeineCrafter.API.Models.Products", b =>
@@ -96,7 +96,7 @@ namespace CaffeineCrafter.API.Migrations
 
                     b.HasIndex("CategoriesId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("CaffeineCrafter.API.Models.Users", b =>
@@ -123,7 +123,7 @@ namespace CaffeineCrafter.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("CaffeineCrafter.API.Models.Products", b =>
